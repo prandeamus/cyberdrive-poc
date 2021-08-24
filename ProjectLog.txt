@@ -24,5 +24,6 @@ Strong reliance on function pointers - so how would I write rust code that can b
 
 How I get started using Visual Studio Code -- this sounds convincing:
 https://www.twelve21.io/getting-started-with-rust-on-windows-and-visual-studio-code/
+- Install VS Build Tools to get pre-reqs
 
 
