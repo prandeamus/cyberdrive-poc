@@ -1,0 +1,28 @@
+I don't always do this, but "Show your workings"
+
+Task - as per Cyberdrive email
+
+Isn't there a higher level Windows API called file system watch? I'm sure there is but perhaps it's more instructive to use the "file system filter driver" and that was the requirement, to be fair.
+
+Browse the provided link. Will come back later.
+
+Find github.com apriorit/file-system-filter project
+C++ example, uses VS 2019 (which I don't have)
+https://www.apriorit.com/dev-blog/167-file-system-filter-driver
+
+Needs WDK/IFS to build (fair enough)
+Warns that unstable drivers could cause BSOD (again, fair enough) "Even the smallest error in a file system driver can cause BSOD or system instability. It was originally published on https://www.apriorit.com/" 
+
+How would I develop this? Best answer would seem to be a copy of Windows running on a VM, because the alternative of running two separate machines and possible repeated installations of Windows sounds unbearable fiddly. Conversely, I don't know if I have a current local licenced copy of a Windows VM suitable for virtualisation. Or maybe if a filter can be attached a specific filesytem only I could create a separate data partition test on, leaving C: safe
+
+Found a possible tutorial
+https://www.codeproject.com/Articles/43586/File-System-Filter-Driver-Tutorial
+
+Can use SC START, SC REMOVE etc to install, start, stop the Filter Driver code
+
+Strong reliance on function pointers - so how would I write rust code that can be called from within the NT kernel & how would I link to it (calling from C to Rust)? And how does one import the C structures etc.
+
+How I get started using Visual Studio Code -- this sounds convincing:
+https://www.twelve21.io/getting-started-with-rust-on-windows-and-visual-studio-code/
+
+
