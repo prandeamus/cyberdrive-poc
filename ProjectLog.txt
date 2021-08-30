@@ -27,3 +27,18 @@ https://www.twelve21.io/getting-started-with-rust-on-windows-and-visual-studio-c
 - Install VS Build Tools to get pre-reqs
 
 
+https://docs.rust-embedded.org/book/interoperability/c-with-rust.html
+
+Can't assume too much about the runtime when running in device-driver/kernel contexts
+
+Use bindgen for relevant headers
+
+C++ API not stable, use C (which is fine because the Windows iterfaces are C oriented.
+
+Section 10.2 "A little rust with your C"
+
+Building a C API
+   #[no_mangle]
+   pub extern "C" fn my_example_function() { ....... }
+   set up cargo to generate a DLL or static library
+
