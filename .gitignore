@@ -14,3 +14,5 @@ Cargo.lock
 *.obj
 *.TAG
 rustylib/target/debug/.cargo-lock
+rustylib/target/debug/librustylib.rlib
+*.rlib
