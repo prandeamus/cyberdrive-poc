@@ -81,14 +81,25 @@ Looks vaguely correct, but we'll come back to those last few lines later.
 
 When I first tried linking I realsed I was using the 32-bit C++ compiler and had to swicth to 64 bit. Fun times. When I rebuilt the C++ in 64 bit mode, there was a linker error because _ZN4core9panicking5panic17h1d8cc1e1ed58a9c7E isn't defined.
 
-The actual multiplication code is clear enough, but the panic code is present. I suppose this is the mangled version of core::panicking::panic from the rust runtime. I assumed that #![no_std] would take care of that, but clearly not. The app won't link because that panic handler doesn't exist in the C++ runtime (fair enough).
+The actual multiplication code is clear enough, but the panic code is present. I suppose this is the mangled version of core::panicking::panic from the rust runtime. I has guesses that ```rust #![no_std] ``` would take care of that, but clearly not. The app won't link because that panic handler doesn't exist in the C++ runtime (fair enough) and it's not in the rlib. Maybe I have to know the location of the rust runtime...
 
 There are clues here: https://docs.rust-embedded.org/book/start/panicking.html which is of course a more extreme case of rust with no operating system at all, but both this task and embedded code will often rely on controlling panic behaviour because the ability to panic is a strong part of the stdlib design - I think!
 
+Looking at https://doc.rust-lang.org/core/ this looks promising: 
+> The Rust Core Library is the dependency-free1 foundation of 
+> The Rust Standard Library. It is the portable glue between the language 
+> and its libraries, defining the intrinsic and primitive building blocks of
+> all Rust code. It links to no upstream libraries, no system libraries,
+> and no libc.
+
 ## TODO 
+
+Lots!
 
 1. Understand and fix linker problems, confirm that i32 can be exchanged both ways.
 2. Look at more complex parameters link pointers to const strings and points to mutable structs. Seems that bindgen can process windows and other C header files to generate equivalent structs, with ```rust #[repr(C)] ``` to ensure compatible memory layouts.
 3. Get a proper understanding of rust memory management and borrowing, which I am stil working through
 4. Look at how much of that code is inherently "unsafe" and how it could be designed or wrappered to make the code good idiomatic rust to make best use of the memory mananger
 5. Once these things are much better understood, return to the original brief of getting this inside a file system filter.
+
+Also, I mocked this up at speed using Visual Studio Code with C++ and Rust extensions, so there are few hard coded directories etc. that I'd seek to avoid in production code.
