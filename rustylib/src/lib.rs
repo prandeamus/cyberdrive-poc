@@ -1,11 +1,9 @@
-#[no_mangle]
+#![crate_type="staticlib"]
+#![no_std]
 
-// Callable from C/C++, print a message a certain number of times
-pub extern "C" fn call_me_from_c(num: i32) 
+// Callable from C/C++
+#[no_mangle]
+pub extern "C" fn call_me_from_c(num: i32) -> i32
 {
-    let mut x = 0;
-    while x < num {
-        println!("Congratulations, you reached a rust function from somewhere else");
-        x = x + 1;
-    }
+    return num*2;
 }

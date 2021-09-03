@@ -11,7 +11,8 @@
                 "/nologo",
                 "/Fe:",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "C:\\Users\\Robert\\Documents\\GitHub\\cyberdrive-poc\\rustylib\\target\\debug\\librustylib.rlib"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -32,7 +33,8 @@
                 "/nologo",
                 "/Fe:",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                "${file}"
+                "${file}",
+                "C:\\Users\\Robert\\Documents\\GitHub\\cyberdrive-poc\\rustylib\\target\\debug\\librustylib.rlib"
             ],
             "options": {
                 "cwd": "${fileDirname}"

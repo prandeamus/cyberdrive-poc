@@ -42,6 +42,8 @@ Building a C API
    pub extern "C" fn my_example_function() { ....... }
    set up cargo to generate a DLL or static library
 
+http://bitboom.github.io/calling-rust-from-cpp
+FFI "Foreign FUnction Interface"
 
 https://doc.rust-lang.org/cargo/guide/creating-a-new-project.html
 http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/reference/linkage.html
@@ -49,5 +51,9 @@ http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/ref
 cargo new rustystuff --lib 
 
 (--vcs none if you dont want a new git repo)
+
+Start VSCODE 64 bit mode 
+
+https://docs.microsoft.com/en-us/cpp/build/how-to-enable-a-64-bit-visual-cpp-toolset-on-the-command-line?view=msvc-160
 
 

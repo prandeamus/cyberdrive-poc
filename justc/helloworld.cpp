@@ -12,15 +12,17 @@
 
 // Should be a custom .h file somewhere.
 extern "C" {
-    void call_me_from_c(uint32_t num);
+    int32_t call_me_from_c(int32_t num);
 }
 
 int main() {
     // Program starting
     std::wcout << "Hello world" << std::endl;
 
-    // Doesn't work yet
-    // call_me_from_c(5);
+    // Doesn't work yet - linker fails
+    // LNK2019: unresolved external symbol _ZN4core9panicking5panic17h1d8cc1e1ed58a9c7E referenced in function call_me_from_c
+    uint32_t v = call_me_from_c(5);
+    std::wcout << "I returned from rust " << v << std::endl;
 
     // Open a directory
     HANDLE hDir = CreateFile(
