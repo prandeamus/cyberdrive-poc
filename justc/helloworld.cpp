@@ -18,7 +18,7 @@ int main() {
 
     // Open a directory
     HANDLE hDir = CreateFile(
-        TEXT("C:\\Users\\Robert\\Documents\\Rust\\justc"),
+        TEXT("C:\\Users\\Robert\\Documents\\GitHub\\cyberdrive-poc"), // hard-coded
         GENERIC_READ,
         FILE_SHARE_READ,
         NULL,
@@ -31,7 +31,7 @@ int main() {
         exit(1);
     }
 
-    wcout << "Waiting for directory changes. ^C to exit. I am not sophisticated" << endl;
+    wcout << "Waiting for directory changes. ^Break to exit. I am not sophisticated" << endl;
 
     FILE_NOTIFY_INFORMATION buffer[1024];
     DWORD bytesReturned;
@@ -66,6 +66,11 @@ int main() {
             // but not doing so for reasons of time
         }
 
-    CloseHandle(hDir);
+    // In practice this won't be executed here, because we're not catching the exit cleanly
+    // but make an effort. Untested.
+    if(hDir) {
+        CloseHandle(hDir);
+        hDir = NULL;
+    }
 }
 
