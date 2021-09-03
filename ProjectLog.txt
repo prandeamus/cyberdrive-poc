@@ -42,3 +42,12 @@ Building a C API
    pub extern "C" fn my_example_function() { ....... }
    set up cargo to generate a DLL or static library
 
+
+https://doc.rust-lang.org/cargo/guide/creating-a-new-project.html
+http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/reference/linkage.html
+
+cargo new rustystuff --lib 
+
+(--vcs none if you dont want a new git repo)
+
+

@@ -10,11 +10,17 @@
 #include <windows.h>
 #include <Winbase.h>
 
-using namespace std;
+// Should be a custom .h file somewhere.
+extern "C" {
+    void call_me_from_c(uint32_t num);
+}
 
 int main() {
     // Program starting
-    wcout << "Hello world" << endl;
+    std::wcout << "Hello world" << std::endl;
+
+    // Doesn't work yet
+    // call_me_from_c(5);
 
     // Open a directory
     HANDLE hDir = CreateFile(
@@ -27,11 +33,11 @@ int main() {
         NULL);
 
     if(hDir == INVALID_HANDLE_VALUE) {
-        wcout << "Canot open directory. Exiting." << endl;
+        std::wcout << "Canot open directory. Exiting." << std::endl;
         exit(1);
     }
 
-    wcout << "Waiting for directory changes. ^Break to exit. I am not sophisticated" << endl;
+    std::wcout << "Waiting for directory changes. ^Break to exit. I am not sophisticated" << std::endl;
 
     FILE_NOTIFY_INFORMATION buffer[1024];
     DWORD bytesReturned;
@@ -49,7 +55,7 @@ int main() {
         NULL,
         NULL))
         {
-            wcout << "A change was detected" << endl;
+            std::wcout << "A change was detected" << std::endl;
 
             // Unpack file notify info from buffer
             int offset = 0;
@@ -60,7 +66,7 @@ int main() {
             wcscpy(filename, L"");
             wcsncpy(filename, pNotify->FileName, pNotify->FileNameLength);
 
-            wcout << "Action= " << pNotify->Action << " " << filename << endl;
+           std:: wcout << "Action= " << pNotify->Action << " " << filename << std::endl;
 
             // Could loop round for more info here, incrementing offset
             // but not doing so for reasons of time
